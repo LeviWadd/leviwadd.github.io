@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* The Magic: Scaling the live site down */
+        .iframe-container {
+            width: 400%; /* Make it huge so the site thinks it's on a desktop */
+            height: 400%;
+            transform: scale(0.25); /* Shrink it back down to 1/4 size */
+            transform-origin: 0 0;
+        }
+        .preview-window {
+            width: 100%;
+            height: 250px; /* Adjust this to change card height */
+            overflow: hidden;
+            position: relative;
+        }
+        /* Overlay to prevent scrolling inside the iframe */
+        .click-shield {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-3xl font-black tracking-tight">LIVE_DASHBOARD</h1>
+            <p class="text-slate-500">Real-time status of my active deployments.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors group">
+                <div class="preview-window">
+                    <div class="click-shield"></div>
+                    <iframe src="https://example.com" class="iframe-container" frameborder="0"></iframe>
+                </div>
+                <div class="p-4 border-t border-slate-800">
+                    <h2 class="font-bold">Project Alpha</h2>
+                    <a href="https://example.com" class="text-sm text-blue-400 hover:underline">Visit Site →</a>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-emerald-500 transition-colors group">
+                <div class="preview-window">
+                    <div class="click-shield"></div>
+                    <iframe src="https://wikipedia.org" class="iframe-container" frameborder="0"></iframe>
+                </div>
+                <div class="p-4 border-t border-slate-800">
+                    <h2 class="font-bold">Wiki Reference</h2>
+                    <a href="https://wikipedia.org" class="text-sm text-emerald-400 hover:underline">Visit Site →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
